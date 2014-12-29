@@ -1,0 +1,30 @@
+# Sample configuration for Debian mailman with Apache
+
+# We can find mailman here:
+ScriptAlias /cgi-bin/mailman/ /usr/lib/cgi-bin/mailman/
+# And the public archives:
+Alias /pipermail/ /var/lib/mailman/archives/public/
+# Logos:
+Alias /images/mailman/ /usr/share/images/mailman/
+
+ScriptAlias /mailman/ /usr/lib/cgi-bin/mailman/
+
+Alias /doc /usr/share/
+<Directory /usr/lib/cgi-bin/mailman/>
+    AllowOverride None
+    Options ExecCGI
+    AddHandler cgi-script .cgi
+    Require all granted
+</Directory>
+<Directory /var/lib/mailman/archives/public/>
+    Options FollowSymlinks
+    AllowOverride None
+    Require all granted
+</Directory>
+<Directory /usr/share/images/mailman/>
+    AllowOverride None
+    Require all granted
+</Directory>
+
+
+
